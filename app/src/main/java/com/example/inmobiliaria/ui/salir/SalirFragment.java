@@ -4,28 +4,39 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
-import com.example.inmobiliaria.databinding.FragmentSlideshowBinding;
+import com.example.inmobiliaria.R;
+import com.example.inmobiliaria.databinding.FragmentSalirBinding;
 
 public class SalirFragment extends Fragment {
 
-    private FragmentSlideshowBinding binding;
+    private FragmentSalirBinding binding;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        SalirViewModel salirViewModel =
-                new ViewModelProvider(this).get(SalirViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentSalirBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSlideshow;
-        salirViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        // Mostrar el diálogo de confirmación
+        new AlertDialog.Builder(getContext())
+                .setTitle("Confirmación de salida")
+                .setMessage("¿Quiere cerrar la aplicación?")
+                .setPositiveButton("Sí", (dialog, which) -> {
+                    requireActivity().finishAffinity(); // Cierra todas las actividades
+                    System.exit(0); // Finaliza el proceso
+                })
+                .setNegativeButton("Cancelar", (dialog, which) -> {
+                    Navigation.findNavController(root).navigate(R.id.nav_home); // Redirige a inicio
+                })
+                .show();
+
         return root;
     }
 

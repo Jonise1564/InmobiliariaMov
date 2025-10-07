@@ -10,7 +10,7 @@ public class SalirViewModel extends ViewModel {
 
     public SalirViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("Menu Salir");
     }
 
     public LiveData<String> getText() {
