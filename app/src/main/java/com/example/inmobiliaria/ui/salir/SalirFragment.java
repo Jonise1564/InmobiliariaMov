@@ -33,7 +33,7 @@ public class SalirFragment extends Fragment {
                     System.exit(0); // Finaliza el proceso
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> {
-                    Navigation.findNavController(root).navigate(R.id.nav_home); // Redirige a inicio
+                    Navigation.findNavController(root).navigate(R.id.nav_inquilinos); // Redirige a inicio
                 })
                 .show();
 
