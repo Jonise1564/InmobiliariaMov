@@ -24,8 +24,7 @@ public class InquilinosFragment extends Fragment {
         binding = FragmentInquilinosBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        inquilinosViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
         return root;
     }
 

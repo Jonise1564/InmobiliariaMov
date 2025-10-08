@@ -25,8 +25,8 @@ public class ContratosFragment extends Fragment {
         binding = FragmentContratosBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textContratos;
-        contratosViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+
         return root;
     }
 
