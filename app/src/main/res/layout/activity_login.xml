@@ -8,20 +8,14 @@
     android:background="#E2D7D7"
     tools:context=".ui.login.LoginActivity">
 
-    <!-- Título de la app -->
 
-
-    <!-- Nombre de la empresa -->
-
-
-    <!-- Icono de ubicación con casa -->
 
     <!-- Campo de usuario -->
 
     <ImageView
         android:id="@+id/logoIcon"
-        android:layout_width="208dp"
-        android:layout_height="146dp"
+        android:layout_width="222dp"
+        android:layout_height="156dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/logograndeplata"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/etUsuario"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Usuario"
@@ -43,30 +37,30 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"/>
 
-    <!-- Campo de contraseña -->
+    <!-- campo de contraseña -->
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/etClave"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:backgroundTint="#800080"
-        app:layout_constraintTop_toBottomOf="@id/username"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"/>
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#800080"
+        android:hint="Clave"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etUsuario" />
 
-    <!-- Botón de login -->
+    <!-- botón de login -->
     <Button
         android:id="@+id/loginButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="LOGIN"
         android:textColor="#FFFFFF"
-        android:backgroundTint="#800080"
-        app:layout_constraintTop_toBottomOf="@id/password"
+        android:backgroundTint="#002480"
+        app:layout_constraintTop_toBottomOf="@id/etClave"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
