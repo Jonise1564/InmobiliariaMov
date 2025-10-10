@@ -8,10 +8,6 @@
     android:background="#E2D7D7"
     tools:context=".ui.login.LoginActivity">
 
-
-
-    <!-- Campo de usuario -->
-
     <ImageView
         android:id="@+id/logoIcon"
         android:layout_width="222dp"
@@ -30,29 +26,27 @@
         android:hint="Usuario"
         android:inputType="text"
         android:backgroundTint="#800080"
-        app:layout_constraintTop_toBottomOf="@id/logoIcon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"/>
+        android:layout_marginEnd="32dp"
+        app:layout_constraintTop_toBottomOf="@id/logoIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- campo de contraseña -->
     <EditText
         android:id="@+id/etClave"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="#800080"
         android:hint="Clave"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="#800080"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintTop_toBottomOf="@id/etUsuario"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etUsuario" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- botón de login -->
     <Button
         android:id="@+id/loginButton"
         android:layout_width="0dp"
@@ -60,11 +54,21 @@
         android:text="LOGIN"
         android:textColor="#FFFFFF"
         android:backgroundTint="#002480"
-        app:layout_constraintTop_toBottomOf="@id/etClave"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"/>
+        android:layout_marginEnd="32dp"
+        app:layout_constraintTop_toBottomOf="@id/etClave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/loginButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

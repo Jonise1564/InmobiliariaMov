@@ -12,6 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ApiClient {
 
@@ -21,7 +22,7 @@ public class ApiClient {
     // Interfaz interna para definir los endpoints
     public interface InmoService {
         @FormUrlEncoded
-        @POST("api/propietarios/login")
+        @POST("api/Propietarios/login")
         Call<String> login(@Field("Usuario") String usuario, @Field("Clave") String clave);
     }
 
@@ -36,7 +37,7 @@ public class ApiClient {
 
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(URLBASE)
-                   // .addConverterFactory(ScalarsConverterFactory.create())
+                    .addConverterFactory(ScalarsConverterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();
 

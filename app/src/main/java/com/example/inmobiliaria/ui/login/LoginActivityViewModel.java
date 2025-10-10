@@ -1,13 +1,11 @@
 package com.example.inmobiliaria.ui.login;
 
 import android.app.Application;
-import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.inmobiliaria.MainActivity;
 import com.example.inmobiliaria.request.ApiClient;
 
 import retrofit2.Call;
@@ -15,45 +13,53 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivityViewModel extends AndroidViewModel {
-    public MutableLiveData<String> mMensaje = new MutableLiveData<>();
 
+    private final MutableLiveData<String> mensaje = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> navegacion = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> cargando = new MutableLiveData<>();
+
+    public MutableLiveData<String> getMensaje() {
+        return mensaje;
+    }
+
+    public MutableLiveData<Boolean> getNavegacion() {
+        return navegacion;
+    }
+
+    public MutableLiveData<Boolean> getCargando() {
+        return cargando;
+    }
 
     public LoginActivityViewModel(@NonNull Application application) {
         super(application);
     }
-    public void login(String mail, String clave){
-        ApiClient.InmoService api = ApiClient.getApiInmobiliaria();
-        Call<String> llamada = api.login(mail,clave);
-        llamada.enqueue(new Callback<String>() {
+
+    public void login(String email, String password) {
+        cargando.setValue(true);
+
+        ApiClient.InmoService apiService = ApiClient.getApiInmobiliaria();
+        Call<String> call = apiService.login(email, password);
+
+        call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if(response.isSuccessful()){
+            public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
+                cargando.setValue(false);
 
+                if (response.isSuccessful() && response.body() != null) {
                     String token = response.body();
-                    ApiClient.guardarToken(getApplication(),token);
-                    mMensaje.postValue("Bienvenido");
-                    //Llamo al Activity Menu Navegable
-
-                    Intent intent = new Intent(getApplication(), MainActivity.class);
-                    intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-                    getApplication().startActivity(intent);
-
+                    ApiClient.guardarToken(getApplication(), token);
+                    mensaje.postValue("Bienvenido");
+                    navegacion.postValue(true);
+                } else {
+                    mensaje.postValue("Usuario y/o contraseña incorrectos. Intente nuevamente.");
                 }
-                else
-                    mMensaje.postValue("Usuario y/o contraseña Incorrecta; reintente");
-
-
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                mMensaje.postValue("Error de Servidor");
+            public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
+                cargando.setValue(false);
+                mensaje.postValue("Error de conexión con el servidor. Verifique su conexión e intente más tarde.");
             }
         });
-
-
-
     }
-
-
 }
