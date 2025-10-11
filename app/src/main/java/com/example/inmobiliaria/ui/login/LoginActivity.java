@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         viewModel.getCargando().observe(this, cargando ->
                 binding.progressBar.setVisibility(cargando ? android.view.View.VISIBLE : android.view.View.GONE)
         );
-
+//QUITAR IF
         viewModel.getNavegacion().observe(this, navegar -> {
             if (navegar) {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -54,12 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.loginButton.setOnClickListener(v -> {
             String email = binding.etUsuario.getText().toString().trim();
             String password = binding.etClave.getText().toString().trim();
-
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show();
-            } else {
-                viewModel.login(email, password);
-            }
+            viewModel.login(email, password);
         });
     }
 }

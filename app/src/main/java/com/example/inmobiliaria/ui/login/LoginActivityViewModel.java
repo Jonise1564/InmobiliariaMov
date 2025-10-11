@@ -1,6 +1,7 @@
 package com.example.inmobiliaria.ui.login;
 
 import android.app.Application;
+import android.util.Patterns;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -35,6 +36,22 @@ public class LoginActivityViewModel extends AndroidViewModel {
     }
 
     public void login(String email, String password) {
+        // Validación de campos
+        if (email == null || email.trim().isEmpty()) {
+            mensaje.setValue("El campo email no puede estar vacío.");
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            mensaje.setValue("Ingrese un email válido.");
+            return;
+        }
+
+        if (password == null || password.trim().isEmpty()) {
+            mensaje.setValue("El campo contraseña no puede estar vacío.");
+            return;
+        }
+
         cargando.setValue(true);
 
         ApiClient.InmoService apiService = ApiClient.getApiInmobiliaria();
