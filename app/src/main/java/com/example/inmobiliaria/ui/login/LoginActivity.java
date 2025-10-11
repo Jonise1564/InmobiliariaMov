@@ -42,13 +42,11 @@ public class LoginActivity extends AppCompatActivity {
         viewModel.getCargando().observe(this, cargando ->
                 binding.progressBar.setVisibility(cargando ? android.view.View.VISIBLE : android.view.View.GONE)
         );
-//QUITAR IF
+        //se utiliza para navegar a otra activity
         viewModel.getNavegacion().observe(this, navegar -> {
-            if (navegar) {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
-            }
         });
 
         binding.loginButton.setOnClickListener(v -> {
