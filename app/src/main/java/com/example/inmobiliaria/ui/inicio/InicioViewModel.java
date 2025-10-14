@@ -4,16 +4,30 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class InicioViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
-    private final MutableLiveData<String> mText;
+
+    private final MutableLiveData<LatLng> ubicacionInmobiliaria = new MutableLiveData<>();
+    private final MutableLiveData<String> tituloMarker = new MutableLiveData<>();
+    private final MutableLiveData<Float> zoom = new MutableLiveData<>();
 
     public InicioViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("INICIO");
+        // Inicializar valores
+        ubicacionInmobiliaria.setValue(new LatLng(-33.2950, -66.3356)); // San Luis Capital
+        tituloMarker.setValue("Inmobiliaria LP");
+        zoom.setValue(18f);
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<LatLng> getUbicacionInmobiliaria() {
+        return ubicacionInmobiliaria;
+    }
+
+    public LiveData<String> getTituloMarker() {
+        return tituloMarker;
+    }
+
+    public LiveData<Float> getZoom() {
+        return zoom;
     }
 }

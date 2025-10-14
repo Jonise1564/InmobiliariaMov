@@ -38,13 +38,13 @@
                 android:id="@+id/etDni"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="DNI"
-                android:text="17495869"
+                android:backgroundTint="#FFFFFF"
                 android:enabled="false"
+                android:hint="DNI"
                 android:inputType="number"
+                android:text="17495869"
                 android:textColor="#212121"
-                android:textColorHint="#616161"
-                android:backgroundTint="#FFFFFF" />
+                android:textColorHint="#616161" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo Nombre -->
@@ -109,25 +109,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo Contraseña -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:startIconDrawable="@android:drawable/ic_lock_lock"
-            app:boxBackgroundMode="outline">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Contraseña"
-                android:text="•••"
-                android:enabled="false"
-                android:inputType="textPassword"
-                android:textColor="#212121"
-                android:textColorHint="#616161"
-                android:backgroundTint="#FFFFFF" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo Teléfono -->
         <com.google.android.material.textfield.TextInputLayout
@@ -159,6 +140,7 @@
             android:layout_marginEnd="8dp"
             android:contentDescription="Editar perfil"
             android:src="@android:drawable/ic_menu_edit"
+            android:tag="editar"
             app:backgroundTint="#218C86" />
     </LinearLayout>
 </ScrollView>
