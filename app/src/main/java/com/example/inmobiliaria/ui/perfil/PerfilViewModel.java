@@ -48,13 +48,28 @@ public class PerfilViewModel extends AndroidViewModel {
     }
 
 
-    public void guardar(String icono,String dni, String nom, String ap,String email,String tel){
-        if(icono.equals("editar")){
+    public void guardar(String icono, String dni, String nom, String ap, String email, String tel) {
+        if (icono.equals("editar")) {
             bMestado.setValue(true);
             mIcono.setValue(android.R.drawable.ic_menu_save);
             mTag.setValue("guardar");
-        }else{
-            //Validar campos
+        } else {
+            // validacion de campos
+            if (dni.isEmpty() || nom.isEmpty() || ap.isEmpty() || email.isEmpty() || tel.isEmpty()) {
+                Toast.makeText(getApplication(), "Todos los campos son obligatorios", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+                Toast.makeText(getApplication(), "Email inválido", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            if (!tel.matches("^[\\d\\s\\-()+]{7,20}$")) {
+                Toast.makeText(getApplication(), "Teléfono inválido", Toast.LENGTH_LONG).show();
+                return;
+            }
+
             Propietario p = new Propietario();
             p.setIdPropietario(mp.getValue().getIdPropietario());
             p.setDni(dni);
@@ -68,30 +83,27 @@ public class PerfilViewModel extends AndroidViewModel {
             mTag.setValue("editar");
             bMestado.setValue(false);
 
+            String token = ApiClient.leerToken(getApplication());
+            Call<Propietario> llamada = ApiClient.getApiInmobiliaria().actualizarPropietario("Bearer " + token, p);
+            llamada.enqueue(new Callback<Propietario>() {
+                @Override
+                public void onResponse(Call<Propietario> call, Response<Propietario> response) {
+                    if (response.isSuccessful()) {
+                        Toast.makeText(getApplication(), "Propietario actualizado", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplication(), "Error al actualizar propietario", Toast.LENGTH_LONG).show();
+                        Log.d("Error", response.message());
+                    }
+                }
 
-            String token= ApiClient.leerToken(getApplication());
-           Call<Propietario> llamada =ApiClient.getApiInmobiliaria().actualizarPropietario("Bearer " +token,p);
-           llamada.enqueue(new Callback<Propietario>() {
-               @Override
-               public void onResponse(Call<Propietario> call, Response<Propietario> response) {
-                   if(response.isSuccessful()){
-                       Toast.makeText(getApplication(),"Propietario actualizado",Toast.LENGTH_LONG).show();
-
-                   }else {
-                       Toast.makeText(getApplication(),"Error al actualizar propietario",Toast.LENGTH_LONG).show();
-                       Log.d("Error", response.message());
-                   }
-
-               }
-
-               @Override
-               public void onFailure(Call<Propietario> call, Throwable t) {
-                   Toast.makeText(getApplication(),"Error en el servidor",Toast.LENGTH_LONG).show();
-               }
-           });
-
+                @Override
+                public void onFailure(Call<Propietario> call, Throwable t) {
+                    Toast.makeText(getApplication(), "Error en el servidor", Toast.LENGTH_LONG).show();
+                }
+            });
         }
     }
+
     public void leerPropietario(){
         String token= ApiClient.leerToken(getApplication());
         Call<Propietario> llamada =  ApiClient.getApiInmobiliaria().obtenerPropietario("Bearer " +token);

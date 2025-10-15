@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.inmobiliaria.R;
+import com.example.inmobiliaria.databinding.FragmentInicioBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -21,6 +22,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class InicioFragment extends Fragment {
 
     private InicioViewModel mViewModel;
+    private FragmentInicioBinding binding;
 
     public static InicioFragment newInstance() {
         return new InicioFragment();
@@ -29,7 +31,8 @@ public class InicioFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_inicio, container, false);
+        binding = FragmentInicioBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -45,6 +48,7 @@ public class InicioFragment extends Fragment {
             mapFragment.getViewLifecycleOwnerLiveData().observe(getViewLifecycleOwner(), lifecycleOwner -> {
                 if (lifecycleOwner != null) {
                     mapFragment.getMapAsync(googleMap -> {
+                        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                         mViewModel.getUbicacionInmobiliaria().observe(lifecycleOwner, ubicacion -> {
                             mViewModel.getTituloMarker().observe(lifecycleOwner, titulo -> {
                                 mViewModel.getZoom().observe(lifecycleOwner, zoom -> {
@@ -57,4 +61,11 @@ public class InicioFragment extends Fragment {
                 }
             });
         }
-} }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+}
