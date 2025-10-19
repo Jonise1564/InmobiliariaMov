@@ -1,6 +1,7 @@
 package com.example.inmobiliaria.ui.perfil;
 
 import static androidx.core.content.ContextCompat.getSystemService;
+import static androidx.navigation.Navigation.findNavController;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -22,6 +23,7 @@ import com.example.inmobiliaria.databinding.FragmentPerfilBinding;
 import com.example.inmobiliaria.model.Propietario;
 import android.content.Context;
 
+
 public class PerfilFragment extends Fragment {
 
     private PerfilViewModel mViewModel;
@@ -30,6 +32,7 @@ public class PerfilFragment extends Fragment {
     public static PerfilFragment newInstance() {
         return new PerfilFragment();
     }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -65,19 +68,28 @@ public class PerfilFragment extends Fragment {
         mViewModel.getmIcono().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                binding.fabEditar.setImageResource(integer);
+                binding.icoEditar.setImageResource(integer);
             }
         });
 
         mViewModel.getmTag().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                binding.fabEditar.setTag(s);
+                binding.icoEditar.setTag(s);
 
             }
         });
         mViewModel.leerPropietario();
-        binding.fabEditar.setOnClickListener(new View.OnClickListener() {
+
+        binding.btnCambiarPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                androidx.navigation.Navigation.findNavController(v)
+                        .navigate(R.id.action_nav_perfil_to_cambiarPasswordFragment);
+            }
+        });
+
+        binding.icoEditar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -90,7 +102,7 @@ public class PerfilFragment extends Fragment {
                 String tel=binding.etTelefono.getText().toString();
                 String mail=binding.etEmail.getText().toString();
 
-                mViewModel.guardar((String) binding.fabEditar.getTag(), dni,  nombre,  apellido, mail,tel);
+                mViewModel.guardar((String) binding.icoEditar.getTag(), dni,  nombre,  apellido, mail,tel);
             }
         });
 

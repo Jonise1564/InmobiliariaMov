@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.inmobiliaria.request.ApiClient;
+import com.example.inmobiliaria.request.InmoService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -54,7 +55,7 @@ public class LoginActivityViewModel extends AndroidViewModel {
 
         cargando.setValue(true);
 
-        ApiClient.InmoService apiService = ApiClient.getApiInmobiliaria();
+        InmoService apiService = ApiClient.getApiInmobiliaria();
         Call<String> call = apiService.login(email, password);
 
         call.enqueue(new Callback<String>() {

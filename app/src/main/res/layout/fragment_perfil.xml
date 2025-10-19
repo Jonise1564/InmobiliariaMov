@@ -24,7 +24,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="32dp" />
 
-        <!-- Campo DNI -->
+        <!--dni -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
                 android:textColorHint="#616161" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Campo Nombre -->
+        <!-- nombre -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                 android:backgroundTint="#FFFFFF" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Campo Apellido -->
+        <!-- apellido -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                 android:backgroundTint="#FFFFFF" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Campo Email -->
+        <!--correo -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -108,9 +108,7 @@
                 android:backgroundTint="#FFFFFF" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Campo Contraseña -->
-
-        <!-- Campo Teléfono -->
+        <!-- teléfono -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -131,16 +129,30 @@
                 android:backgroundTint="#FFFFFF" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Botón flotante para editar -->
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabEditar"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="Editar perfil"
-            android:src="@android:drawable/ic_menu_edit"
-            android:tag="editar"
-            app:backgroundTint="#218C86" />
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_marginTop="16dp">
+
+            <Button
+                android:id="@+id/btnCambiarPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Cambiar contraseña" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/icoEditar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Editar perfil"
+                android:src="@android:drawable/ic_menu_edit"
+                android:tag="editar"
+                app:backgroundTint="#218C86" />
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

@@ -1,5 +1,6 @@
 package com.example.inmobiliaria.ui.inmuebles;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -7,32 +8,48 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.inmobiliaria.R;
+import com.example.inmobiliaria.databinding.FragmentInmueblesBinding;
+import com.example.inmobiliaria.model.Inmueble;
+
+import java.util.List;
 
 public class InmueblesFragment extends Fragment {
+    private FragmentInmueblesBinding binding;
+    private InmueblesViewModel vm;
 
-    private InmueblesViewModel mViewModel;
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        vm = new ViewModelProvider(this).get(InmueblesViewModel.class);
+        binding = FragmentInmueblesBinding.inflate(inflater, container, false);
 
-    public static InmueblesFragment newInstance() {
-        return new InmueblesFragment();
+        vm.getmInmueble().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
+            @Override
+            public void onChanged(List<Inmueble> inmuebles) {
+                InmuebleAdapter adapter = new InmuebleAdapter(inmuebles, getContext());
+                GridLayoutManager glm = new GridLayoutManager(getContext(), 2);
+                RecyclerView rv = binding.rvListaInmueble;
+
+                rv.setAdapter(adapter);
+                rv.setLayoutManager(glm);
+            }
+        });
+
+        //vm.leerInmuebles();
+
+        return binding.getRoot();
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_inmuebles, container, false);
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(InmueblesViewModel.class);
-        // TODO: Use the ViewModel
-    }
-
 }
