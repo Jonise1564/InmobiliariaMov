@@ -37,6 +37,8 @@ public interface InmoService {
             @Field("currentPassword") String currentPassword,
             @Field("newPassword") String newPassword
     );
+    @PUT("api/Inmuebles/actualizarDisponibilidad")
+    Call<Inmueble> actualizarInmueble(@Header ("Authorization") String token, @Body Inmueble inmueble);
 
 
 

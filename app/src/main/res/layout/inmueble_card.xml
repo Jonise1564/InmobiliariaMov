@@ -1,12 +1,12 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/idCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
+    app:cardBackgroundColor="#FFFAFAFA"
     app:cardCornerRadius="16dp"
     app:cardElevation="8dp"
-    app:cardBackgroundColor="#FFFAFAFA"
     app:contentPadding="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,51 +17,51 @@
             android:id="@+id/imgInmueble"
             android:layout_width="0dp"
             android:layout_height="180dp"
-            android:scaleType="centerCrop"
             android:background="@android:color/darker_gray"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="Imagen del inmueble"
+            android:scaleType="centerCrop"
             app:layout_constraintDimensionRatio="16:9"
-            android:contentDescription="Imagen del inmueble" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvDireccion"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:text="Dirección del inmueble"
+            android:textColor="#212121"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#212121"
-            app:layout_constraintTop_toBottomOf="@id/imgInmueble"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="12dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgInmueble" />
 
         <TextView
             android:id="@+id/tvTipo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="Tipo de propiedad"
-            android:textSize="14sp"
             android:textColor="#666666"
-            app:layout_constraintTop_toBottomOf="@id/tvDireccion"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDireccion" />
 
         <TextView
             android:id="@+id/tvPrecio"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="$000.000"
-            android:textSize="15sp"
-            android:textColor="#008577"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/tvTipo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:text="$000.000"
+            android:textColor="#008577"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTipo" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
