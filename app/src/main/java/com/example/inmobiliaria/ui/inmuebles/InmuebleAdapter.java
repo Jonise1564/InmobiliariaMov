@@ -50,21 +50,12 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.Inmueb
                 .error("null")
                 .into(holder.imgInmueble);
 
-        //VER
-      //  Glide.with(context)
-          //      .load(ApiClient.URLBASE + i.getImagen())
-            //    .placeholder(R.drawable.baseline_home_24)
-              //  .error("null")
-                //.into(holder.imgInmueble);
         holder.cardView.setOnClickListener(v ->{
             Bundle bundle = new Bundle();
             bundle.putSerializable("inmueble", i);
             Navigation.findNavController((Activity)v.getContext(), R.id.nav_host_fragment_content_main).navigate(R.id.detalleInmuebleFragment, bundle);
 
         });
-
-
-
 
     }
 

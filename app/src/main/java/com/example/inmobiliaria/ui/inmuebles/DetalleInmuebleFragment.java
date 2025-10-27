@@ -49,7 +49,7 @@ public class DetalleInmuebleFragment extends Fragment {
         mViewModel.obtenerInmueble(getArguments());
 
         binding.checkDisponible.setOnClickListener(v -> {
-            mViewModel.actualizarInmueble(binding.checkDisponible.isChecked());
+            mViewModel.actualizarDisponibilidadInmueble(binding.checkDisponible.isChecked());
         });
 
         return binding.getRoot();

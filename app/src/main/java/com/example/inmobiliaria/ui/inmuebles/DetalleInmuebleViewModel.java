@@ -8,13 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.inmobiliaria.model.Inmueble;
 import com.example.inmobiliaria.request.ApiClient;
-import com.example.inmobiliaria.request.InmoService;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,34 +36,28 @@ public class DetalleInmuebleViewModel extends AndroidViewModel {
         }
 
     }
-
-    public void actualizarInmueble(Boolean disponible){
+    public void actualizarDisponibilidadInmueble(Boolean disponible){
         Inmueble inmueble = new Inmueble();
         inmueble.setDisponible(disponible);
         inmueble.setIdInmueble(this.inmueble.getValue().getIdInmueble());
         String token = ApiClient.leerToken(getApplication());
-        Call<Inmueble> llamada = ApiClient.getApiInmobiliaria().actualizarInmueble("Bearer " + token, inmueble);
+        Call<Inmueble> llamada = ApiClient.getApiInmobiliaria().actualizarDisponibilidadInmueble("Bearer " + token, inmueble);
         llamada.enqueue(new Callback<Inmueble>() {
             @Override
             public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(getApplication(), "Inmueble actualizado correctamente", Toast.LENGTH_SHORT).show();
-                    //inmueble.setValue(response.body());
+                    Toast.makeText(getApplication(), "Disponibilidad actualizada correctamente", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplication(), "Error al actualizar el inmueble: " + response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication(), "Error: " + response.message(), Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Inmueble> call, Throwable t) {
-                Toast.makeText(getApplication(), "Error al contactar con el servidor: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplication(), "Fallo de conexión:" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
     }
-
-
-
-
 
 }
