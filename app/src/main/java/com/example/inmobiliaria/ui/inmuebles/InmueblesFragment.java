@@ -43,6 +43,7 @@ public class InmueblesFragment extends Fragment {
                 rv.setLayoutManager(glm);
             }
         });
+        vm.leerInmuebles();
 
         binding.fabAddInmueble.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -46,10 +46,10 @@ public interface InmoService {
 
     @Multipart
     @POST("api/Inmuebles/cargar")
-    Call<Inmueble>cargarInmueble(
-            @Header("Autorization") String token,
+    Call<Inmueble> cargarInmueble(
+            @Header("Authorization") String token,
             @Part MultipartBody.Part imagen,
-            @Part ("inmueble") RequestBody inmuebleBdoy
+            @Part ("inmueble") RequestBody Inmueble
     );
 
 

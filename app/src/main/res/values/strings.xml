@@ -10,4 +10,14 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string-array name="uso_array">
+        <item>Residencial</item>
+        <item>Comercial</item>
+    </string-array>
+
+    <string-array name="tipo_array">
+        <item>Departamento</item>
+        <item>Casa</item>
+        <item>Salón</item>
+    </string-array>
 </resources>
