@@ -1,6 +1,8 @@
 package com.example.inmobiliaria.request;
 
+import com.example.inmobiliaria.model.Contrato;
 import com.example.inmobiliaria.model.Inmueble;
+import com.example.inmobiliaria.model.Pago;
 import com.example.inmobiliaria.model.Propietario;
 
 import java.util.List;
@@ -17,6 +19,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 public interface InmoService {
 
@@ -51,8 +54,19 @@ public interface InmoService {
             @Part MultipartBody.Part imagen,
             @Part ("inmueble") RequestBody Inmueble
     );
+    @GET("api/contratos/inmueble/{id}")
+    Call<Contrato> obtenerContratoPorIdInmueble(
+            @Header("Authorization") String token,
+            @Path("id") int idInmueble
+    );
+    @GET("api/Inmuebles/GetContratoVigente")
+    Call<List<Inmueble>> obtenerInmueblesConContratoVigente(@Header("Authorization") String token);
 
-
+    @GET("api/Pagos/contrato/{id}")
+    Call<List<Pago>> obtenerPagosPorContrato(
+            @Header("Authorization") String token,
+            @Path("id") int idContrato
+    );
 
 
 

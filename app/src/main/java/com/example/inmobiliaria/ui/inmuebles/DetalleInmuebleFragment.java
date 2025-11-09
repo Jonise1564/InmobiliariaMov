@@ -32,12 +32,12 @@ public class DetalleInmuebleFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(DetalleInmuebleViewModel.class);
 
         mViewModel.getInmueble().observe(getViewLifecycleOwner(), inmueble -> {
-            binding.tvIdInmueble.setText(inmueble.getIdInmueble() + "");
+          //  binding.tvIdInmueble.setText(inmueble.getIdInmueble() + "");
             binding.tvDireccionI.setText(inmueble.getDireccion());
             binding.tvUsoI.setText(inmueble.getUso());
             binding.tvAmbientesI.setText(inmueble.getAmbientes() + "");
-            binding.tvLatitudI.setText(inmueble.getLatitud() + "");
-            binding.tvLongitudI.setText(inmueble.getLongitud() + "");
+//            binding.tvLatitudI.setText(inmueble.getLatitud() + "");
+//            binding.tvLongitudI.setText(inmueble.getLongitud() + "");
             binding.tvValorI.setText(inmueble.getValor() + "");
             Glide.with(this)
                     .load(ApiClient.URL_BASE + inmueble.getImagen())

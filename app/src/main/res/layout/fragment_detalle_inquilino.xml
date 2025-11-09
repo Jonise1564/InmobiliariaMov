@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0F7FA"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Información del inquilino"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#00796B"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="24dp" />
+
+        <!-- Campo reutilizable -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Código -->
+            <TextView
+                android:text="Código"
+                android:textSize="16sp"
+                android:textColor="#555555" />
+            <TextView
+                android:id="@+id/valor_codigo"
+                android:text="100"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:paddingBottom="12dp" />
+
+            <!-- Nombre -->
+            <TextView
+                android:text="Nombre"
+                android:textSize="16sp"
+                android:textColor="#555555" />
+            <TextView
+                android:id="@+id/valor_nombre"
+                android:text="Mario"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:paddingBottom="12dp" />
+
+            <!-- Apellido -->
+            <TextView
+                android:text="Apellido"
+                android:textSize="16sp"
+                android:textColor="#555555" />
+            <TextView
+                android:id="@+id/valor_apellido"
+                android:text="Luna"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:paddingBottom="12dp" />
+
+            <!-- DNI -->
+            <TextView
+                android:text="DNI"
+                android:textSize="16sp"
+                android:textColor="#555555" />
+            <TextView
+                android:id="@+id/valor_dni"
+                android:text="25340691"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:paddingBottom="12dp" />
+
+            <!-- Email -->
+            <TextView
+                android:text="E-mail"
+                android:textSize="16sp"
+                android:textColor="#555555" />
+            <TextView
+                android:id="@+id/valor_email"
+                android:text="luna@mail.com"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:paddingBottom="12dp" />
+
+            <!-- Teléfono -->
+            <TextView
+                android:text="Teléfono"
+                android:textSize="16sp"
+                android:textColor="#555555" />
+            <TextView
+                android:id="@+id/valor_telefono"
+                android:text="2664253411"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:paddingBottom="12dp" />
+
+            <!-- Garante -->
+            <TextView
+                android:text="Garante"
+                android:textSize="16sp"
+                android:textColor="#555555" />
+            <TextView
+                android:id="@+id/valor_garante"
+                android:text="Lucero Roberto"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:paddingBottom="12dp" />
+
+            <!-- Teléfono garante -->
+            <TextView
+                android:text="Teléfono garante"
+                android:textSize="16sp"
+                android:textColor="#555555" />
+            <TextView
+                android:id="@+id/valor_telefono_garante"
+                android:text="2664851422"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:paddingBottom="12dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

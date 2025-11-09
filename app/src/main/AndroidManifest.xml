@@ -1,8 +1,9 @@
-<!-- Para probar el menu con el LoginActivity(Pantalla login)-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-feature android:name="android.hardware.telephony" android:required="false" />
 
 
 
@@ -30,12 +31,17 @@
             </intent-filter>
         </activity>
 
-        <!-- MainActivity sin intent-filter -->
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Inmobiliaria.NoActionBar" />
+        <receiver android:name=".ui.login.LlamadaBroadcast" />
     </application>
 
 </manifest>
+
+
+
+
